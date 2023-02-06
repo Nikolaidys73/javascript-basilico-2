@@ -4,7 +4,7 @@ const stockProductos = [
     nombre: "Airbag",
     cantidad: 1,
     desc: "Teatro Opera ",
-    precio: 1200,
+    precio: 4500,
     img: "img/1.png",
   },
   {
@@ -12,7 +12,7 @@ const stockProductos = [
     nombre: "Cruzando el charco",
     cantidad: 1,
     desc: "Estadio Atenas",
-    precio: 1500,
+    precio: 4000,
     img: "img/2.png",
   },
   {
@@ -20,7 +20,7 @@ const stockProductos = [
     nombre: "Guasones",
     cantidad: 1,
     desc: "Luna Park ",
-    precio: 1570,
+    precio: 3000,
     img: "img/3.png",
   },
   {
@@ -28,7 +28,7 @@ const stockProductos = [
     nombre: "La Beriso",
     cantidad: 1,
     desc: " Rosario Central ",
-    precio: 1000,
+    precio: 5000,
     img: "img/4.jpg",
   },
   {
@@ -36,7 +36,7 @@ const stockProductos = [
     nombre: "La Renga",
     cantidad: 1,
     desc: "Olavarria ",
-    precio: 1200,
+    precio: 3500,
     img: "img/5.png",
   },
   {
@@ -44,7 +44,7 @@ const stockProductos = [
     nombre: "Divididos",
     cantidad: 1,
     desc: " Rafaela ",
-    precio: 1200,
+    precio: 4500,
     img: "img/6.jpg",
   },
   {
@@ -52,7 +52,7 @@ const stockProductos = [
     nombre: "El Plan de la Mariposa",
     cantidad: 1,
     desc: "Necochea",
-    precio: 1400,
+    precio: 2400,
     img: "img/7.png",
   },
   {
@@ -60,7 +60,7 @@ const stockProductos = [
     nombre: "Foo Fighters",
     cantidad: 1,
     desc: " Orfeo de cordoba",
-    precio: 1200,
+    precio: 11000,
     img: "img/8.jpg",
   },
   {
@@ -68,7 +68,7 @@ const stockProductos = [
     nombre: "Greta Van Fleet",
     cantidad: 1,
     desc: "Velez Sarfield ",
-    precio: 1400,
+    precio: 12000,
     img: "img/9.png",
   },
   {
@@ -76,7 +76,7 @@ const stockProductos = [
     nombre: "La Federal Blues ",
     cantidad: 1,
     desc: " River Plate",
-    precio: 1200,
+    precio: 1500,
     img: "img/11.jpg",
   },
 ];
@@ -241,33 +241,33 @@ function procesarPedido() {
   );
 }
 
- function enviarCompra(e){
-   e.preventDefault()
-   const cliente = document.querySelector('#cliente').value
-   const email = document.querySelector('#correo').value
+function enviarCompra(e){
+  e.preventDefault()
+  const cliente = document.querySelector('#cliente').value
+  const email = document.querySelector('#correo').value
 
-   if(email === '' || cliente == ''){
-     Swal.fire({
-       title: "¡Debes completar tu email y nombre!",
-       text: "Rellena el formulario",
-       icon: "error",
-       confirmButtonText: "Aceptar",
-   })
- } else {
+  if(email === '' || cliente == ''){
+    Swal.fire({
+      title: "¡Debes completar tu email y nombre!",
+      text: "Rellena el formulario",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+  })
+} else {
 
   //envio de correos ( respuesta)
   const btn = document.getElementById('button');
 
   document.getElementById('form')
-   .addEventListener('submit', function(event) {
-     event.preventDefault();
+  .addEventListener('submit', function(event) {
+    event.preventDefault();
   
-     btn.value = 'Sending...';
+    btn.value = 'Sending...';
   
-     const serviceID = 'default_service';
-     const templateID = 'template_sizac6g';
+    const serviceID = 'default_service';
+    const templateID = 'template_sizac6g';
   
-     emailjs.sendForm(serviceID, templateID, this)
+    emailjs.sendForm(serviceID, templateID, this)
       .then(() => {
         btn.value = 'Send Email';
         alert('Sent!');
@@ -277,27 +277,27 @@ function procesarPedido() {
       });
   });
     
-   const spinner = document.querySelector('#spinner')
-   spinner.classList.add('d-flex')
-   spinner.classList.remove('d-none')
+  const spinner = document.querySelector('#spinner')
+  spinner.classList.add('d-flex')
+  spinner.classList.remove('d-none')
 
-   setTimeout(() => {
-     spinner.classList.remove('d-flex')
-     spinner.classList.add('d-none')
-     formulario.reset()
+  setTimeout(() => {
+    spinner.classList.remove('d-flex')
+    spinner.classList.add('d-none')
+    formulario.reset()
 
-     const alertExito = document.createElement('p')
-     alertExito.classList.add('alert', 'alerta', 'd-block', 'text-center', 'col-12', 'mt-2', 'alert-success')
-     alertExito.textContent = 'Compra realizada correctamente'
-     formulario.appendChild(alertExito)
+    const alertExito = document.createElement('p')
+    alertExito.classList.add('alert', 'alerta', 'd-block', 'text-center', 'col-12', 'mt-2', 'alert-success')
+    alertExito.textContent = 'Compra realizada correctamente'
+    formulario.appendChild(alertExito)
 
-     setTimeout(() => {
-       alertExito.remove()
-     }, 3000)
+    setTimeout(() => {
+      alertExito.remove()
+    }, 3000)
 
 
-   }, 3000)
- }
- localStorage.clear()
+  }, 3000)
+}
+localStorage.clear()
 
- }
+}

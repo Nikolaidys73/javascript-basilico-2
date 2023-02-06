@@ -1,5 +1,5 @@
  // La del clima
- window.addEventListener('load', ()=> {
+window.addEventListener('load', ()=> {
     let lon
     let lat
 
@@ -13,15 +13,15 @@
 
 
     if(navigator.geolocation){
-       navigator.geolocation.getCurrentPosition( posicion => {
+      navigator.geolocation.getCurrentPosition( posicion => {
 
-           lon = posicion.coords.longitude
-           lat = posicion.coords.latitude
+          lon = posicion.coords.longitude
+          lat = posicion.coords.latitude
             //UBI  
-           const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=94b3f3c7782924fb07aa9f476c8d7de5`
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=94b3f3c7782924fb07aa9f476c8d7de5`
 
 
-           fetch(url)
+            fetch(url)
             .then( response => { return response.json()})
             .then( data => {
                 
@@ -75,7 +75,7 @@
             .catch( error => {
                 console.log(error)
             })
-       })
+      })
           
     }
 })
