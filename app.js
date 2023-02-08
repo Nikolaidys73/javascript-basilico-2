@@ -243,10 +243,10 @@ function procesarPedido() {
 
 function enviarCompra(e){
   e.preventDefault()
-  const cliente = document.querySelector('#cliente').value
-  const email = document.querySelector('#correo').value
+  const persona = document.querySelector('#cliente').value
+  const correo = document.querySelector('#correo').value
 
-  if(email === '' || cliente == ''){
+  if(correo === '' || persona == ''){
     Swal.fire({
       title: "¡Debes completar tu email y nombre!",
       text: "Rellena el formulario",
@@ -258,24 +258,24 @@ function enviarCompra(e){
   //envio de correos ( respuesta)
   const btn = document.getElementById('button');
 
-  document.getElementById('form')
-  .addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    btn.value = 'Sending...';
-  
-    const serviceID = 'default_service';
-    const templateID = 'template_sizac6g';
-  
-    emailjs.sendForm(serviceID, templateID, this)
-      .then(() => {
-        btn.value = 'Send Email';
-        alert('Sent!');
-      }, (err) => {
-        btn.value = 'Send Email';
-        alert(JSON.stringify(err));
-      });
-  });
+//document.getElementById('form')
+//.addEventListener('submit', function(event) {
+//event.preventDefault();
+
+btn.value = 'Sending...';
+
+const serviceID = 'default_service';
+const templateID = 'template_30hjya8';
+
+emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Enviado!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+  };
     
   const spinner = document.querySelector('#spinner')
   spinner.classList.add('d-flex')
@@ -288,7 +288,7 @@ function enviarCompra(e){
 
     const alertExito = document.createElement('p')
     alertExito.classList.add('alert', 'alerta', 'd-block', 'text-center', 'col-12', 'mt-2', 'alert-success')
-    alertExito.textContent = 'Compra realizada correctamente'
+    alertExito.textContent = 'Realizaste correctamente la compra, te enviaremos la informacion por e-mail'
     formulario.appendChild(alertExito)
 
     setTimeout(() => {
@@ -300,4 +300,3 @@ function enviarCompra(e){
 }
 localStorage.clear()
 
-}
