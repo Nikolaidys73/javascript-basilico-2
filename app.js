@@ -243,10 +243,10 @@ function procesarPedido() {
 
 function enviarCompra(e){
   e.preventDefault()
-  const persona = document.querySelector('#cliente').value
+  const cliente = document.querySelector('#cliente').value
   const correo = document.querySelector('#correo').value
 
-  if(correo === '' || persona == ''){
+  if(correo === '' || cliente == ''){
     Swal.fire({
       title: "¡Debes completar tu email y nombre!",
       text: "Rellena el formulario",
@@ -256,26 +256,8 @@ function enviarCompra(e){
 } else {
 
   //envio de correos ( respuesta)
-  const btn = document.getElementById('button');
-
-  document.getElementById('form')
-  .addEventListener('submit', function(event) {
-    event.preventDefault();
   
-    btn.value = 'Sending...';
   
-    const serviceID = 'default_service';
-    const templateID = 'template_sizac6g';
-  
-    emailjs.sendForm(serviceID, templateID, this)
-      .then(() => {
-        btn.value = 'Send Email';
-        alert('Sent!');
-      }, (err) => {
-        btn.value = 'Send Email';
-        alert(JSON.stringify(err));
-      });
-  });
     
   const spinner = document.querySelector('#spinner')
   spinner.classList.add('d-flex')
@@ -298,6 +280,4 @@ function enviarCompra(e){
 
   }, 3000)
 }
-localStorage.clear()
-
-}
+localStorage.clear() }
